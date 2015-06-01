@@ -1,0 +1,30 @@
+{
+    "name":         "koa-heartbeat",
+    "version":      "0.0.1",
+    "description":  "HTTP health check middleware for Koa servers",
+    "main":         "index.js",
+    "scripts":      {
+    },
+    "repository":   {
+        "type": "git",
+        "url":  "git+https://github.com/jordansexton/koa-heartbeat.git"
+    },
+    "keywords":     [
+        "koa",
+        "heartbeat",
+        "health",
+        "check"
+    ],
+    "author":       "Jordan Sexton <jordan@jordansexton.com>",
+    "contributors": [
+        {
+            "name":  "Jordan Sexton",
+            "email": "jordan@jordansexton.com"
+        }
+    ],
+    "license":      "MIT",
+    "bugs":         {
+        "url": "https://github.com/jordansexton/koa-heartbeat/issues"
+    },
+    "homepage":     "https://github.com/jordansexton/koa-heartbeat"
+}
