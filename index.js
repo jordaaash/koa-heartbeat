@@ -1,12 +1,13 @@
 'use strict';
 
 var heartbeat = function (options) {
-    var path, status, body, type, match;
+    var path, status, body, type, headers, match;
     if (options != null) {
-        path   = options.path;
-        status = options.status;
-        body   = options.body;
-        type   = options.type;
+        path    = options.path;
+        status  = options.status;
+        body    = options.body;
+        type    = options.type;
+        headers = options.headers;
     }
     if (path == null) {
         path = '/heartbeat';
@@ -35,6 +36,9 @@ var heartbeat = function (options) {
             this.body   = body;
             if (type != null) {
                 this.type = type;
+            }
+            if (headers != null) {
+                this.set(headers);
             }
         }
         else {
