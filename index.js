@@ -1,15 +1,19 @@
 'use strict';
 
 var heartbeat = function (options) {
-    var path, body, type;
+    var path, status, body, type;
     if (options == null) {
         options = {};
     }
-    path = options.path;
-    body = options.body;
-    type = options.type;
+    path   = options.path;
+    status = options.status;
+    body   = options.body;
+    type   = options.type;
     if (path == null) {
         path = '/heartbeat';
+    }
+    if (status === void 0) {
+        status = 200;
     }
     if (body === void 0) {
         body = '';
@@ -17,7 +21,7 @@ var heartbeat = function (options) {
 
     return function* heartbeat (next) {
         if (this.path === path) {
-            this.status = 200;
+            this.status = status;
             this.body   = body;
             if (type != null) {
                 this.type = type;
