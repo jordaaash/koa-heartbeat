@@ -1,26 +1,36 @@
 'use strict';
 
 var heartbeat = function (options) {
-    var path, status, body, type;
-    if (options == null) {
-        options = {};
+    var path, status, body, type, match;
+    if (options != null) {
+        path   = options.path;
+        status = options.status;
+        body   = options.body;
+        type   = options.type;
     }
-    path   = options.path;
-    status = options.status;
-    body   = options.body;
-    type   = options.type;
     if (path == null) {
         path = '/heartbeat';
     }
-    if (status === void 0) {
+    if (status == null) {
         status = 200;
     }
-    if (body === void 0) {
+    if (body == null) {
         body = '';
     }
 
+    if (Object.prototype.toString.call(path) === '[object RegExp]') {
+        match = function (value) {
+            return path.test(value);
+        };
+    }
+    else {
+        match = function (value) {
+            return path === value;
+        };
+    }
+
     return function* heartbeat (next) {
-        if (this.path === path) {
+        if (match(this.path)) {
             this.status = status;
             this.body   = body;
             if (type != null) {
