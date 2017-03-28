@@ -2,6 +2,9 @@
     "name":         "koa-heartbeat",
     "version":      "0.0.3",
     "description":  "HTTP health check middleware for Koa servers",
+    "engines":      {
+        "node": ">=7.6.0"
+    },
     "main":         "index.js",
     "scripts":      {
     },
