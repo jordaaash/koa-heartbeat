@@ -30,19 +30,19 @@ var heartbeat = function (options) {
         };
     }
 
-    return function* heartbeat (next) {
-        if (match(this.path)) {
-            this.status = status;
-            this.body   = body;
+    return async function heartbeat (context, next) {
+        if (match(context.path)) {
+            context.status = status;
+            context.body   = (typeof body === 'function') ? body.call(context) : body;
             if (type != null) {
-                this.type = type;
+                context.type = type;
             }
             if (headers != null) {
-                this.set(headers);
+                context.set(headers);
             }
         }
         else {
-            yield next;
+            await next();
         }
     };
 };
